@@ -19,8 +19,13 @@ class card:
         if self.sortKey != -1:
             output += "sortkey=%s\n" %(str(self.sortKey))
         return output        
+name = "cardDatabase.ini"
+if platform.system() == "Windows":
+    name = "%AppData%/Local/Cockatrice/Cockatrice/settings/"+ name
+elif platform.system() == "Linux":
+    name = "~/.local/share/Cockatrice/Cockatrice/settings/"+ name
     
-f = open("cardDatabase.ini", "r")
+f = open(name,"w+")
 
 cards = dict()
 max = -1
@@ -55,7 +60,7 @@ f.close()
 for c in cards:
     cards[c].sortKey = max - cards[c].sortKey + 1
 
-f2 = open("cardDatabase.ini", "w+")
+f2 = open(name,"w+")
 for c in cards:
     f2.write(cards[c].str2())
 f2.write("[sets]\n")
