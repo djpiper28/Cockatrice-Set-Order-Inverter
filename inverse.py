@@ -55,7 +55,7 @@ f.close()
 for c in cards:
     cards[c].sortKey = max - cards[c].sortKey + 1
 
-f2 = open("cardDatabase.ini.new", "w+")
+f2 = open("cardDatabase.ini", "w+")
 for c in cards:
     f2.write(cards[c].str2())
 f2.write("[sets]\n")
